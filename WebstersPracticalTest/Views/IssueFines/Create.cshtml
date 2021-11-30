@@ -1,0 +1,80 @@
+﻿@model WebstersPracticalTest.Models.Fine
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lst = ViewBag.Lst as IEnumerable<WebstersPracticalTest.Models.Fine>;
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Fine</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label>Select Fine Name</label>
+            <select id="FineId" name="FineId" class="form-control">
+                @foreach (var item in lst)
+                {
+                    <option value="@item.Fineid">@item.FineName</option>
+                }
+
+
+            </select>
+
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="form-group">
+            <label>Select Fine Amount</label>
+            <select id="FineamoId" name="FineamoId" class="form-control">
+                @foreach (var item in lst)
+                {
+                    <option value="@item.Fineid">@item.FineCharges</option>
+                }
+
+
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FineName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FineName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FineName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FineCharges, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FineCharges, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FineCharges, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,35 @@
+﻿@model WebstersPracticalTest.Models.Fine
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FineCharges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FineCharges)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Fineid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
